@@ -1,75 +1,55 @@
-import React, { Component } from "react";
-import { ListCategories, Hasil, Menus } from "../components";
+import React, { useState, useEffect } from "react";
+import { ListCategories, Hasil, Menus, NavbarComponent } from "../components";
 import { Col, Container, Row } from "react-bootstrap";
 import { API_URL } from "../utils/constants";
 import axios from "axios";
 import swal from "sweetalert";
 
-export default class Home extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      menus: [],
-      categoriYangDipilih: "Makanan",
-      keranjang: [],
-    };
-  }
-
-  componentDidMount() {
-    axios
-      .get(API_URL + "products?category.nama=" + this.state.categoriYangDipilih)
-      .then((res) => {
-        const menus = res.data;
-        this.setState({ menus });
-      })
-      .catch((error) => {
-        console.log("Error ya", error);
-      });
-
+const Home = (props) => {
+  const [menus, setMenus] = useState([]);
+  const [categoriYangDipilih, setCategoriYangDipilih] = useState("Makanan");
+  const [keranjangs, setKeranjangs] = useState([]);
+  
+  const getListKeranjang = () => {
     axios
       .get(API_URL + "keranjangs")
       .then((res) => {
         const keranjangs = res.data;
-        this.setState({ keranjangs });
-      })
-      .catch((error) => {
-        console.log("Error ya", error);
-      });
-  }
-
-  componentDidUpdate(prevState) {
-    if (this.state.keranjangs !== prevState.keranjangs) {
-      axios
-        .get(API_URL + "keranjangs")
-        .then((res) => {
-          const keranjangs = res.data;
-          this.setState({ keranjangs });
-        })
-        .catch((error) => {
-          console.log("Error ya", error);
-        });
-    }
-  }
-
-  changeCategory = (value) => {
-    this.setState({
-      categoriYangDipilih: value,
-      menus: [],
-    });
-
-    axios
-      .get(API_URL + "products?category.nama=" + value)
-      .then((res) => {
-        const menus = res.data;
-        this.setState({ menus });
+        setKeranjangs(keranjangs);
       })
       .catch((error) => {
         console.log("Error ya", error);
       });
   };
 
-  masukKeranjang = (value) => {
+  useEffect(() => {
+    axios
+      .get(API_URL + "products?category.nama=" + categoriYangDipilih)
+      .then((res) => {
+        const menus = res.data;
+        setMenus(menus);
+      })
+      .catch((error) => {
+        console.log("Error ya", error);
+      });
+    getListKeranjang();
+  }, [categoriYangDipilih]);
+
+  const changeCategory = (value) => {
+    setCategoriYangDipilih(value);
+    setMenus([]);
+    axios
+      .get(API_URL + "products?category.nama=" + value)
+      .then((res) => {
+        const menus = res.data;
+        setMenus(menus);
+      })
+      .catch((error) => {
+        console.log("Error ya", error);
+      });
+  };
+
+  const masukKeranjang = (value) => {
     axios
       .get(API_URL + "keranjangs?product.id=" + value.id)
       .then((res) => {
@@ -79,10 +59,10 @@ export default class Home extends Component {
             total_harga: value.harga,
             product: value,
           };
-
           axios
             .post(API_URL + "keranjangs", keranjang)
             .then((res) => {
+              getListKeranjang();
               swal({
                 title: "Sukses Masuk Keranjang",
                 text: keranjang.product.nama,
@@ -122,29 +102,28 @@ export default class Home extends Component {
       });
   };
 
-  render() {
-    console.log(this.state.menus);
-    const { menus, categoriYangDipilih, keranjangs } = this.state;
-    return (
-        <div className="mt-3">
-          <Container fluid>
+  return (
+    <div>
+      <NavbarComponent />
+      <Container fluid className="mt-3">
+        <Row>
+          <ListCategories changeCategory={changeCategory} categoriYangDipilih={categoriYangDipilih} />
+          <Col>
+            <h4>
+              <strong>Daftar Produk</strong>
+            </h4>
+            <hr />
             <Row>
-              <ListCategories changeCategory={this.changeCategory} categoriYangDipilih={categoriYangDipilih} />
-              <Col>
-                <h4>
-                  <strong>Daftar Produk</strong>
-                </h4>
-                <hr />
-                <Row>
-                  {menus.map((menu) => (
-                    <Menus key={menu.id} menu={menu} masukKeranjang={this.masukKeranjang} />
-                  ))}
-                </Row>
-              </Col>
-              <Hasil keranjangs={keranjangs} />
+              {menus.map((menu) => (
+                <Menus key={menu.id} menu={menu} masukKeranjang={masukKeranjang} />
+              ))}
             </Row>
-          </Container>
-        </div>
-    );
-  }
-}
+          </Col>
+          <Hasil keranjangs={keranjangs} {...props} />
+        </Row>
+      </Container>
+    </div>
+  );
+};
+
+export default Home;

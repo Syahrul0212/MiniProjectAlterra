@@ -8,6 +8,7 @@ const NavbarComponent = () => {
       <Container fluid>
         <Navbar.Brand href="#"><strong>Kasir</strong> App</Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
+        {/* <Navbar.Brand href="#"><strong>Log Out</strong></Navbar.Brand> */}
       </Container>
     </Navbar>
   );

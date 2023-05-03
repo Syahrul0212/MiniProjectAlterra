@@ -3,10 +3,11 @@ import { Badge, Col, ListGroup, Row } from "react-bootstrap";
 import { numberWithCommas } from "../utils/utils";
 import TotalBayar from "./TotalBayar";
 
-function Hasil(props) {
+const Hasil = (props) => {
   const { keranjangs } = props;
-  console.log("Keranjangs hasil", props);
+
   return (
+
     <Col md={3} mt="2">
       <h4>
         <strong>List Pembelian</strong>
@@ -36,9 +37,9 @@ function Hasil(props) {
           ))}
         </ListGroup>
       )}
-      <TotalBayar keranjangs={keranjangs} />
+      <TotalBayar keranjangs={keranjangs} {...props} />
     </Col>
   );
-}
+};
 
 export default Hasil;

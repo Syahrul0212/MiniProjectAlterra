@@ -1,4 +1,7 @@
 export const numberWithCommas = (x) => {
+    if (x === undefined) {
+        return "";
+    }
     x = x.toString();
     var pattern = /(-?\d+)(\d{3})/;
     while (pattern.test(x))

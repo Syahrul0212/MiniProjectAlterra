@@ -5,6 +5,10 @@
   font-weight: 400;
 }
 
+body {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
 .category-aktif {
   background-color: green;
   color: white;
@@ -13,3 +17,13 @@
 .btn-success {
   background-color: #22668A;
 }
+
+.group, .card-menus {
+  cursor: pointer;
+}
+
+
+.group, .card-menus :hover {
+  background-color: aquamarine;
+}
+
