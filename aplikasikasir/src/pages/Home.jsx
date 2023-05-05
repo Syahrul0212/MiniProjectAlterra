@@ -65,10 +65,10 @@ const Home = (props) => {
               getListKeranjang();
               swal({
                 title: "Sukses Masuk Keranjang",
-                text: keranjang.product.nama,
+                text: "Berhasil Ditambakan! " + keranjang.product.nama,
                 icon: "success",
                 button: false,
-                timer: 1000,
+                timer: 1500,
               });
             })
             .catch((error) => {
@@ -86,10 +86,10 @@ const Home = (props) => {
             .then((res) => {
               swal({
                 title: "Sukses Masuk Keranjang",
-                text: keranjang.product.nama,
+                text: "Berhasil Ditambakan! " + keranjang.product.nama,
                 icon: "success",
                 button: false,
-                timer: 1000,
+                timer: 1500,
               });
             })
             .catch((error) => {
@@ -108,18 +108,18 @@ const Home = (props) => {
       <Container fluid className="mt-3">
         <Row>
           <ListCategories changeCategory={changeCategory} categoriYangDipilih={categoriYangDipilih} />
-          <Col>
+          <Col className="mt-3">
             <h4>
               <strong>Daftar Produk</strong>
             </h4>
             <hr />
-            <Row>
+            <Row className="overflow-auto menu">
               {menus.map((menu) => (
                 <Menus key={menu.id} menu={menu} masukKeranjang={masukKeranjang} />
               ))}
             </Row>
           </Col>
-          <Hasil keranjangs={keranjangs} {...props} />
+          <Hasil keranjangs={keranjangs} {...props} getListKeranjang={getListKeranjang} />
         </Row>
       </Container>
     </div>
