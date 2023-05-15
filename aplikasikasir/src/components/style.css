@@ -1,0 +1,19 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;900;&display=swap");
+
+.navbar {
+    background-color: rgb(15, 15, 15) !important;
+}
+
+.logo {
+    display: flex;
+    font-size: 40px;
+    font-weight: 800;
+    color: #feffff;
+    letter-spacing: 3px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+/* .logo :hover {
+    background-color: rgb(78, 217, 119);
+} */

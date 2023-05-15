@@ -51,7 +51,8 @@ function App() {
         <MDBCol col="12">
           <MDBCard className="bg-white my-5 mx-auto" style={{ borderRadius: "1rem", maxWidth: "500px" }}>
             <MDBCardBody className="p-5 w-100 d-flex flex-column">
-              <h2 className="fw-bold mb-2 text-center">Sign Up</h2>
+            <h2 className="fw-bold mb-2 text-center">Kasir App</h2>
+              <h5 className="fw-bold mb-2 text-center">Sign Up</h5>
               <p className="text-white-50 mb-3">Please enter your login and password!</p>
               <Form onSubmit={handleGoogleRegister}>
                 <MDBInput wrapperClass="mb-4 w-100" label="Email address" id="formControlLg" type="email" size="lg" name="email" />

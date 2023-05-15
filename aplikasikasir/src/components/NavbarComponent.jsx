@@ -5,6 +5,7 @@ import Nav from "react-bootstrap/Nav";
 import { getAuth, signOut } from "firebase/auth"; 
 import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
+import "./style.css"
 
 const NavbarComponent = () => {
   const [user, setUser] = useState();
@@ -28,10 +29,10 @@ const NavbarComponent = () => {
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="success" variant="dark">
+    <Navbar className="navbar" collapseOnSelect expand="lg" bg="success" variant="dark" >
       <Container>
-        <Navbar.Brand href="#home">
-          <strong>Kasir</strong> App
+        <Navbar.Brand href="#home" className="logo">
+          <strong>Kasir-App<b>.</b></strong>
         </Navbar.Brand>
       </Container>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -41,7 +42,7 @@ const NavbarComponent = () => {
           <Nav.Link href="#pricing"></Nav.Link>
         </Nav>
         <Nav>
-          <img src={user?.photoURL} className="border rounded-circle" height={40} />
+          <img src={user?.photoURL} className="image border rounded-circle" height={40} />
           <Nav.Link href="#deets"><strong>{user?.email}</strong></Nav.Link>
           <Button className="btn btn-success ms-4 me-4 " onClick={handleLogOut}>
             Log Out
