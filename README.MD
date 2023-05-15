@@ -4,7 +4,7 @@ Hi visitor 👋 this is my mini project for accomplish Studi Independen [ 2023 C
 
 #
 
-🌐 Final Website App Preview : [https://mini-project-alterra-six.vercel.app/](#)
+🌐 Final Website App Preview : [Klik disini](https://mini-project-alterra-six.vercel.app/)
 
 📄 Important Document
 
