@@ -4,9 +4,10 @@ Hi visitor 👋 this is my mini project for accomplish Studi Independen [ 2023 C
 
 #
 
-🌐 Final Website App Preview : [Klik disini](https://mini-project-alterra-six.vercel.app/)
+🌐 Final Website App Preview : [Preview](https://mini-project-alterra-six.vercel.app/)
 
 📄 Important Document
 
 1. Word / Google Docs : [Klik disini](https://drive.google.com/drive/folders/1lJBWZKsRfD8BnPtLBJ9Ss9NIZa-S-z6n?usp=sharing)
 2. PPT : [Klik disini](https://docs.google.com/presentation/d/18jw2UiXukUeDTofNDxUHHxqcDpW8JxwnFN4aGLKTVeY/edit?usp=sharing)
+3. Vidio Remed : [Watch](https://drive.google.com/file/d/1xTp1axOUyRk6ByvzerPLiqfiNJ2-Jsp_/view?usp=sharing)
